@@ -19,7 +19,7 @@ public class Solution {
         
         for (int i = 0; i < T; i++) {
             int wrappers = (N[i][0] / N[i][1]) + (N[i][0] % N[i][1]);
-            int bonus = N[i][2] / wrappers;
+            int bonus = wrappers / N[i][2];
             int total = wrappers + bonus;
             System.out.println(total);
         }
