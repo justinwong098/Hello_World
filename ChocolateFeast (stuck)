@@ -1,0 +1,27 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        
+        int[][] N = new int[T][3];
+        
+        //populate the matrix
+        for (int i = 0; i < T; i++) {
+            for (int j = 0; j < N[i].length; j++) {
+                N[i][j] = sc.nextInt();
+            }
+        }
+        
+        
+        for (int i = 0; i < T; i++) {
+            int wrappers = (N[i][0] / N[i][1]) + (N[i][0] % N[i][1]);
+            int bonus = N[i][2] / wrappers;
+            int total = wrappers + bonus;
+            System.out.println(total);
+        }
+    }
+}
