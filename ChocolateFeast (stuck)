@@ -7,21 +7,30 @@ public class Solution {
         Scanner sc = new Scanner(System.in);
         int T = sc.nextInt();
         
-        int[][] N = new int[T][3];
-        
-        //populate the matrix
-        for (int i = 0; i < T; i++) {
-            for (int j = 0; j < N[i].length; j++) {
-                N[i][j] = sc.nextInt();
+        for  (int i = 0; i < T; i++) {
+            //money
+            int N = sc.nextInt();
+            
+            //price of chocolate
+            int C = sc.nextInt();
+            
+            // wrappers needed for a free chocolate
+            int M = sc.nextInt();
+            
+            int chocolates = N / C;
+            
+            int wrappers = chocolates;
+            
+            
+            // why does this work??
+            while (wrappers >= M) {
+                int newChocolate = wrappers/M;
+                chocolates += newChocolate;
+                wrappers = wrappers % M;
+                wrappers += newChocolate;
+            }
+            
+            System.out.println("" + chocolates);
             }
         }
-        
-        
-        for (int i = 0; i < T; i++) {
-            int wrappers = (N[i][0] / N[i][1]) + (N[i][0] % N[i][1]);
-            int bonus = wrappers / N[i][2];
-            int total = wrappers + bonus;
-            System.out.println(total);
-        }
     }
-}
