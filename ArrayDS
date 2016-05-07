@@ -1,0 +1,23 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        int[] N = new int[sc.nextInt()];
+        
+        for (int i = 0; i < N.length; i++) {
+            N[i] = sc.nextInt();
+            //System.out.print(N[3 - i]);
+        }
+        for (int i = (N.length-1); i < N.length; i--) {
+            System.out.print(N[i]);
+            System.out.print(" ");
+            
+            
+        }
+    }
+    
+}
