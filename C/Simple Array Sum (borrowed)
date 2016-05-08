@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+class Solution {
+
+    static void Main(String[] args) {
+        int result = 0;
+        string[] arr_temp = Console.ReadLine().Split(' ');
+        int[] arr = Array.ConvertAll(arr_temp,Int32.Parse);
+        
+        string[] str = Console.ReadLine().Split(' ');
+        foreach(string s in str) {
+            result += Int32.Parse(s);
+        }
+        Console.WriteLine(result);
+        Console.Read();
+    }
+}
