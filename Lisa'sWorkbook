@@ -2,19 +2,12 @@ import java.io.*;
 import java.util.*;
 
 public class Solution {
-   
-    
 
     public static void main(String[] args) {
         
         Scanner sc = new Scanner(System.in);
-        
         int N = sc.nextInt();
         int K = sc.nextInt();
-        
-        //Populate array
-        
-        int acc = 0;
         
         int[] problemsPerChapter = new int[N];
         
@@ -22,30 +15,38 @@ public class Solution {
             problemsPerChapter[i] = sc.nextInt();
         }
         
-        int currentPage = 1;
+        int currentPage = 0;
         
-        
+        int specialProblems = 0;
         
         
         for (int i = 0; i < N; i++) {
+            currentPage++;
+            int totalProblems = problemsPerChapter[i];
             
-            currentPage = problemsPerChapter[i]
+            int currentProblem = 1;
             
-            if (currentPage == currentProblem) {
-                specialProblems++;
+            int problemLimit = K;
+            
+            while (currentProblem <= totalProblems) {
+                
+                if (currentProblem == currentPage) {
+                    specialProblems++;
+                }
+                
+                currentProblem++;
+                
+                problemLimit--;
+                
+                if (problemLimit == 0 && currentProblem <= totalProblems) {
+                    currentPage++;
+                    problemLimit = K;
+                }
             }
-            
-            
-           
-            
-            
-        
-        
         }
-    
-    
+        
+        System.out.print(specialProblems);
+        
     }
-      
-        
-        
-        
+}
+ 
