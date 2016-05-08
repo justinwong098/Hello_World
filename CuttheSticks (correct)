@@ -1,0 +1,47 @@
+	import java.util.*;
+
+	
+	public class Solution2 {
+
+	    public static void main(String[] args) {
+	        
+	        Scanner sc = new Scanner(System.in);
+	        
+	        int N = sc.nextInt();
+	        
+	        int[] sticks = new int[N];
+	        
+	        for (int i = 0; i < N; i++) {
+	            sticks[i] = sc.nextInt();
+	        }
+	        //List b = Arrays.asList(ArrayUtils.toObject(a));
+	        
+	        int oldNum = Integer.MAX_VALUE;
+	        int newNum = Integer.MAX_VALUE;
+	        int res = N;
+	        int cut = 0;
+	        
+	        while (res > 0) {
+	            System.out.println(res);
+	            
+	            oldNum = Integer.MAX_VALUE;
+	            newNum = Integer.MAX_VALUE;
+	            newNum = sticks[0];
+	            for (int j = 0; j < N; j++) {
+	                newNum = sticks[j]; 
+	                if ((newNum < oldNum) && (newNum > 0)) {
+	                    oldNum = newNum;
+	                }
+	            }
+	            cut = oldNum;
+	            for (int j = 0; j < N; j++) {
+	                sticks[j] -= cut;
+	                if (sticks[j] == 0) {
+	                    res--;
+	                }
+	            }
+	        }
+	    }
+	}
+	            
+	          
