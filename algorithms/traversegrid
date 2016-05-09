@@ -1,0 +1,156 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    
+        static int c = 0;
+        static int C = 0;
+        static int r = 0;
+        static int R = 0;
+    
+    static int[][] G;
+    static int[][] p;
+    
+    static int matchRow = 0;
+    static int matchColumn = 0;
+    
+    public static void main(String[] args) {
+       
+        
+        Scanner sc = new Scanner(System.in);
+        
+        int T = sc.nextInt();
+        
+        
+        while (T > 0) {
+            T--;
+            
+            matchRow = 0;
+            matchColumn = 0;
+            
+            R = sc.nextInt();
+            
+            C = sc.nextInt();
+
+            
+            G = new int[R][C];
+            
+            sc.nextLine();
+            
+            for (int i = 0; i < R; i++){
+                // parse out each line as a string then to digits in char array
+                String lineInt = sc.nextLine();
+                char[] digits = lineInt.toCharArray();
+                
+                for (int j = 0; j < digits.length; j++) {
+                    char c = digits[j];
+                    int digit = Character.getNumericValue(c);
+                    G[i][j] = digit;
+                }
+            }
+            
+            r = sc.nextInt();
+            
+            
+            for (int i = 0; i < R; i++){
+                // parse out each line as a string then to digits in char array
+                String lineInt = sc.nextLine();
+                char[] digits = lineInt.toCharArray();
+                
+                for (int j = 0; j < digits.length; j++) {
+                    char d = digits[j];
+                    int digit = Character.getNumericValue(c);
+                    p[i][j] = digit;
+                }
+            }
+            
+            matchRow = 0;
+            matchColumn = 0;
+            
+            int firstNumber = p[0][0];
+            
+            boolean hasMatch = traverseGrid(firstNumber);
+            
+            if (hasMatch){
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+        }
+        
+        sc.close();
+        
+    }
+    
+    private static boolean searchGridForMatch(Point point) {
+        Point pointBack = new Point(point.x, point.y);
+        
+        int rMatches = 0;
+        
+        int cMatches = 1;
+        
+        int currentColumn = point.y;
+        int currentRow = point.x;
+        
+        outerwhile: while (rMatches < r) {
+            while (cMatches < c) {
+                matchColumn++;
+                int currentNumber = p[matchRow][matchColumn];
+                currentColumn++;
+                int matchNumber = G[currentRow][currentColumn];
+                
+                if(currentNumber == matchNumber)
+                    cMatches++;
+                else
+                    break outerwhile;
+            }
+            
+            matchRow++;
+            currentRow++;
+            rMatches++;
+            
+            
+            currentColumn = pointBack.y - 1;
+            cMatches = 0;
+            matchColumn = -1;
+        }
+        
+        matchRow = 0;
+        matchColumn = 0;
+        
+        
+        if (rMatches == r)
+            return true;
+        else
+            return false;
+        
+    }
+    
+    private static boolean traverseGrid(int n) {
+        // traverse the G grid to find the next occurrence of N
+        int highestColumnIndexToCheck = C - c;
+        int highestRowIndexToCheck = R - r;
+        
+        Point point = new Point();
+        
+        for (int i = 0; i <= highestRowIndexToCheck; i++) {
+            for (int j = 0; j <= highestColumnIndexToCheck; j++) {
+                int temp = G[i][j];
+                if (temp == n) {
+                    point.x = i;
+                    point.y = j;
+                    
+                    boolean hasMatch = searchGridForMatch(point);
+                    
+                    if (hasMatch)
+                        return true;
+                   
+                }
+            }
+        }
+        
+        return false;
+        
+    }
+}
+        
