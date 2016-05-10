@@ -1,27 +1,50 @@
 import java.io.*;
 import java.util.*;
 
+
 public class Solution {
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int T = sc.nextInt();
+ 
+ 
+    private static int minDeletionsRequired(String str) {
+        int index = 0;
+        int numberOfDeletionsReq = 0;
+        int len = str.length();
         
-        int minNumDeletions = 0;
-        
-        while (T > 0) {
-            T--;
-            String str = sc.nextLine();
-            String first = str.substring(0, 1);
-            String second = str.substring(1, 2);
-            if (second == first) {
-                minNumDeletions++;
-                str = str.substring(1);
+        while (index < len - 1) {
+            if (str.charAt(index) == str.charAt(index + 1)) {
+                numberOfDeletionsReq++;
             }
-            for (int i = 0; i < str.length(); i++) {
-                String third = str.substring(2, 3);
-                }
-                
-                
-                if 
-                
+            index++;
+        }
+        return numberOfDeletionsReq;
+    }
+    
+    private static void process(int numberOfStrings, String[] inputStrs) {
+        int repeations = 0;
+        while (repeations < numberOfStrings) {
+            System.out.println(minDeletionsRequired(inputStrs[repeations++]));
+        }
+    }
+ 
+    private static String[] acceptInput(Scanner scanner, int numberOfStrings) {
+        String[] inputStrs = new String[numberOfStrings];
+        int repeations = 0;
+        while (repeations < numberOfStrings) {
+            inputStrs[repeations++] = scanner.next();
+        }
+        return inputStrs;
+    }
+ 
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int numberOfStrings = scanner.nextInt();
+ 
+        String[] inputStrs = acceptInput(scanner, numberOfStrings);
+ 
+        process(numberOfStrings, inputStrs);
+ 
+        scanner.close();
+    }
+}
