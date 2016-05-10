@@ -1,0 +1,27 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        
+        int minNumDeletions = 0;
+        
+        while (T > 0) {
+            T--;
+            String str = sc.nextLine();
+            String first = str.substring(0, 1);
+            String second = str.substring(1, 2);
+            if (second == first) {
+                minNumDeletions++;
+                str = str.substring(1);
+            }
+            for (int i = 0; i < str.length(); i++) {
+                String third = str.substring(2, 3);
+                }
+                
+                
+                if 
+                
