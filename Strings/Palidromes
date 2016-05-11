@@ -4,25 +4,30 @@ import java.util.*;
 public class Solution {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        int T = reader.nextInt();
-        int count = 0;
-        for(int i=0;i<T;i++){
-            count = 0;
-            String s = reader.next();
-            char[] s_letters = s.toCharArray();
-            int m = 0;
-            int n = s_letters.length-1;
-            while(m<n){
-                if(s_letters[m]!=s_letters[n]){
-                    int tmp = Math.abs(s_letters[m]-s_letters[n]);
-                    count = count+tmp;
- 
+
+        Scanner sc = new Scanner(System.in);
+
+        int T = sc.nextInt();
+
+        sc.nextLine();
+
+
+
+        while (T > 0) {
+            T--;
+
+            String str = sc.nextLine();
+
+            char[] charArray = str.toCharArray();
+
+            for (int i = 0; i < charArray.length; i++) {
+                if (!(charArray[i] == charArray[charArray.length - i])) {
+                    charArray[charArray.length - i] = charArray[charArray.length - i - 1];
                 }
-                m++;
-                n--;
             }
-            System.out.println(count);
         }
+
+
+
     }
 }
