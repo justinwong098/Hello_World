@@ -1,0 +1,27 @@
+import java.io.*;
+import java.util.*;
+
+
+public class Solution {
+
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+
+        char[] charArray = str.toCharArray();
+
+        boolean result = true;
+        for (char c = 'A'; c <= 'Z'; c++) {
+            if((str.indexOf(c) < 0) && (str.indexOf((char)(c + 32)) < 0)){
+                result = false;
+            }
+        }
+        if (result) {
+            System.out.print("pangram");
+        } else {
+            System.out.print("not pangram");
+        }
+    }
+}
