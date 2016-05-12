@@ -6,13 +6,20 @@ class Solution {
 
     static void Main(String[] args) {
         int result = 0;
-        string[] arr_temp = Console.ReadLine().Split(' ');
-        int[] arr = Array.ConvertAll(arr_temp,Int32.Parse);
         
+        // just does something with the first input to pass by it (that's why it's called temp_arr)
+        int n = Convert.ToInt32(Console.ReadLine());
+        
+        // second line on input becomes a string array split by spaces
         string[] str = Console.ReadLine().Split(' ');
+        
+        // converting str into an int array
+        // int[] arr = Array.ConvertAll(str,Int32.Parse);  <-- this line is actually unnecessary
+        
         foreach(string s in str) {
             result += Int32.Parse(s);
         }
+
         Console.WriteLine(result);
         Console.Read();
     }
