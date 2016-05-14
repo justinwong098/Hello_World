@@ -5,12 +5,29 @@ using System.Linq;
 class Solution {
 
     static void Main(String[] args) {
+        int n = Convert.ToInt32(Console.ReadLine());
+        string[] arr_temp = Console.ReadLine().Split(' ');
+        int[] arr = Array.ConvertAll(arr_temp,Int32.Parse);
         
-    var n = Double.Parse(Console.ReadLine());
-    var a = Console.ReadLine().Split(' ').Select(val => Int32.Parse(val));
-
-    Console.WriteLine(a.Count(val => val > 0) / n);
-    Console.WriteLine(a.Count(val => val < 0) / n);
-    Console.WriteLine(a.Count(val => val == 0) / n);
+        int total = arr.Length;
+        long pos = 0;
+        long neg = 0;
+        long zer = 0;
+        
+        foreach(long l in arr){
+            if (l > 0){
+                pos++;
+            } else if 
+                (l < 0) {
+                neg++;
+            } else {
+                zer++;
+            }
+        }
+        
+        Console.WriteLine(pos/(float) total);
+        Console.WriteLine(neg/(float) total);
+        Console.WriteLine(zer/(float) total);
     }
 }
+            
