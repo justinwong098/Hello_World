@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+class Solution {
+
+    static void Main(String[] args) {
+        String str = Console.ReadLine();
+        char c = str[8];
+        char[] chars = {str[0],str[1]};
+        string s = new string(chars);
+        str = str.Substring(2, 6);
+        
+        if ((c == 'P') && (chars[1] != 2)) {
+            int i = Convert.ToInt32(s);
+            i += 12;
+            s = i.ToString();
+            str = s + str; 
+        } else if ((c == 'A') && (chars[1] == 2)) {
+            s = "00";
+            str = s + str;
+        } else {
+            str = s + str;
+        }
+            Console.WriteLine(str);
+        
+    }
+}
