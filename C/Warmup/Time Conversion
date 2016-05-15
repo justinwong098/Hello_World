@@ -11,12 +11,12 @@ class Solution {
         string s = new string(chars);
         str = str.Substring(2, 6);
         
-        if ((c == 'P') && (chars[1] != 2)) {
+        if ((c == 'P') && (s != "12")) {
             int i = Convert.ToInt32(s);
             i += 12;
             s = i.ToString();
             str = s + str; 
-        } else if ((c == 'A') && (chars[1] == 2)) {
+        } else if ((c == 'A') && (s == "12")) {
             s = "00";
             str = s + str;
         } else {
