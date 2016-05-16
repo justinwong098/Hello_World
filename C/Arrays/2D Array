@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+class Solution {
+
+    static void Main(String[] args) {
+        int[][] arr = new int[6][];
+        for(int arr_i = 0; arr_i < 6; arr_i++){
+           string[] arr_temp = Console.ReadLine().Split(' ');
+           arr[arr_i] = Array.ConvertAll(arr_temp,Int32.Parse);
+        }
+        
+        int older = Int32.MinValue;
+        int newer = Int32.MinValue;
+        
+         for(int arr_i = 0; arr_i < 4; arr_i++){
+             newer = arr[arr_i][arr_i]   + arr[arr_i][arr_i + 1]     + arr[arr_i][arr_i + 2]
+                                         + arr[arr_i + 1][arr_i + 1]
+                 + arr[arr_i + 2][arr_i] + arr[arr_i + 2][arr_i + 1] + arr[arr_i + 2][arr_i + 2];
+             if (newer > older){
+                 older = newer;
+                 Console.WriteLine(older);
+             }
+         }
+
+             
+    }
+}
