@@ -1,65 +1,36 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+class Solution {
 
-namespace HackerRank___ServiceLane
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            int n, t;
-            String[] width;            
-            String[] segment;
+    static void Main(String[] args) {
+        string[] arr_temp1 = Console.ReadLine().Split(' ');
+        int[] arr1 = Array.ConvertAll(arr_temp1,Int32.Parse);
+        int n = arr1[0];
+        int t = arr1[1];
+        string[] arr_temp2 = Console.ReadLine().Split(' ');
+        int[] length = Array.ConvertAll(arr_temp2,Int32.Parse);
+        
+        while (t > 0) {
+            t--;
+            string[] arr_temp3 = Console.ReadLine().Split(' ');
+            int[] temparr = Array.ConvertAll(arr_temp3,Int32.Parse);
+            int temp1 = temparr[0];
+            int temp2 = temparr[1];
             
-            String[] iVal = Console.ReadLine().Split(' ');
-            n = int.Parse(iVal[0]);
-            t = int.Parse(iVal[1]);
-           
-            width = Console.ReadLine().Split(' ');
-            int[] w = new int[width.Length];
-            for (int k = 0; k < width.Length; k++)
-            {
-                w[k] = int.Parse(width[k]);                    
-            }
-
-            int[] suitableVehicle = new int[t];
-
-            for (int j = 0; j < t; j++)
-            {               
-                int s1, s2;
-                segment = Console.ReadLine().Split(' ');
-                s1 = int.Parse(segment[0]);
-                s2 = int.Parse(segment[1]);
-                suitableVehicle[j] = serviceLane(w, s1, s2);                
-            }
-
-            for (int sV = 0; sV < t; sV++)
-            {
-                Console.WriteLine(suitableVehicle[sV]);
-            }
-
-            Console.ReadLine();
-
-        }
-
-        public static int serviceLane(int[] width, int start, int end)
-        {
-            int min =3;
-            for (int i = start; i <= end; i++)
-            {
-                if (width[i] < min)
-                {
-                    min = width[i];
+            int older = 3;
+            int newer = 3;
+            for(int i = temp1; i <= temp2; i++){
+                if (length[i] < older){
+                    older = length[i];
                 }
             }
-            return min;
+            
+            Console.WriteLine(older);
         }
-
-        
     }
 }
-
