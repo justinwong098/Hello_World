@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+class Solution {
+
+    static void Main(String[] args) {
+        int t = Convert.ToInt32(Console.ReadLine());
+        for(int a0 = 0; a0 < t; a0++){
+            int n = Convert.ToInt32(Console.ReadLine());
+            string str = n.ToString();
+            char[] chAr = str.ToCharArray();
+            int count = 0;
+
+            for (int a1 = 0; a1 < chAr.Length; a1++){
+                int temp = chAr[a1];
+                    
+                if ((n % temp) == 0) {
+                    count++;
+                } 
+            }
+            
+            Console.WriteLine(count);
+        }
+    }
+}
+
