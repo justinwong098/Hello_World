@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+class Solution {
+    static void Main(String[] args) {
+        
+        string str = Console.ReadLine();
+        int T = Int32.Parse(str);
+        
+        string[] testCases = new string[T];
+        string str1 = "";
+        string str2 = "";
+        
+        for (int i = 0; i < T; i++){
+            testCases[i] = Console.ReadLine();
+        }
+        
+        for (int i = 0; i < T; i++){
+            int length = testCases[i].Length;
+            str1 = testCases[i].Substring(0, length/2);
+            str2 = testCases[i].Substring(length/2);
+            
+            
+            
+            if (str1.Length == str2.Length){
+                int result = length/2;
+                char[] charA1 = str1.ToCharArray();
+                char[] charA2 = str2.ToCharArray();
+                
+                foreach(char c in charA1){
+                    foreach(char d in charA2){
+                        if (c == d){
+                            result--;
+                            break;
+                        }
+                    }
+                }
+                Console.WriteLine(result);              
+                    
+            } else {
+                Console.WriteLine(-1);
+            }
+        }
+    }
+}
