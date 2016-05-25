@@ -14,10 +14,12 @@ class Solution {
             int len = first.Length;
             
             
-            for(int j = 0, k = 1; k < first.Length; j++, k++){
-                if (second.Contains(first.Substring(j, k))){
-                        result = true;
-                        break;
+            for(int j = 0; j < first.Length; j++){
+                string str1 = first.Substring(j, 1);
+                
+                if (second.Contains(str1)){
+                    result = true;
+                    break;
                 }
             }
                     
