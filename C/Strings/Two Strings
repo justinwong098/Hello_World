@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+class Solution {
+    static void Main(String[] args) {
+        
+        string strT = Console.ReadLine();
+        int T = Int32.Parse(strT);
+        
+        for (int i = 0; i < T; i++){
+            bool result = false;
+            string first = Console.ReadLine();
+            string second = Console.ReadLine();
+            int len = first.Length;
+            
+            
+            for(int j = 0, k = 1; k < first.Length; j++, k++){
+                if (second.Contains(first.Substring(j, k))){
+                        result = true;
+                        break;
+                }
+            }
+                    
+            if (result){
+                Console.WriteLine("YES");
+            } else {
+                Console.WriteLine("NO");
+            }
+        }
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
+    }
+}
