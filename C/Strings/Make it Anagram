@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+class Solution {
+    static void Main(String[] args) {
+        
+        string first  = Console.ReadLine();
+        string second = Console.ReadLine();
+        int count = 0;
+        string answer = "";
+        StringBuilder sb = new StringBuilder();
+        
+        
+        foreach(char c in first){
+            foreach(char d in second){
+                if(c == d){
+                    sb.Append(c);
+                    break;
+                }
+            }
+        }
+        
+        int fLength = first.Length;
+        int sLength = second.Length;
+        
+        count = ((fLength + sLength) - (sb.Length * 2));
+        
+        
+        
+        
+        
+        
+        Console.WriteLine(count);
+    }
+}
