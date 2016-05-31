@@ -1,0 +1,59 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int nNumChapters = sc.nextInt();
+        int kPPage = sc.nextInt();
+
+        int actualPage = 0;
+        int specialProblems = 0;
+
+        for (int k = 0; k < nNumChapters; k++){
+
+            int tPPChapter = sc.nextInt();
+
+            int problemsRemaining = tPPChapter;
+            int[] problemsRA = new int[tPPChapter];
+
+            for(int i = 0; i < problemsRA.length; i++){
+                problemsRA[i] = i+1;
+            }
+
+
+
+
+            if (tPPChapter / kPPage == 0){
+                actualPage++;
+            }
+
+            int pageTurns = (tPPChapter / kPPage);
+
+            while (pageTurns > 0){
+                actualPage++;
+                   if (actualPage == problemsRA[k]){
+                       specialProblems++;
+                   }
+            }
+
+
+            problemsRemaining = (tPPChapter % kPPage);
+
+            if ((problemsRemaining != 0) && ((tPPChapter / kPPage) != 0)) {
+                actualPage++;
+                if (actualPage == problemsRA[k]){
+                    specialProblems++;
+                }
+            }
+
+
+            System.out.println(actualPage);
+
+            }
+
+
+        }
+    }
