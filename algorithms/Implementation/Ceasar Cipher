@@ -1,0 +1,52 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        sc.nextLine();
+        String str = sc.nextLine();
+        char[] charRA = str.toCharArray();
+        int K = sc.nextInt();
+        sc.close();
+
+
+        for(char i = 'a'; i < 'z'; i++){
+
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            char a = charRA[i];
+            if ((a >= 'a') && (a <= 'z')) {
+                if (a + K > 'z') {
+                    for (int j = 0; j<K; j++){
+                        a++;
+                        if (a > 'z'){
+                            a = 'a';
+                        }
+                    }
+                } else {
+                    a += K;
+                }
+
+            } else if ((a >= 'A') && (a <= 'Z')){
+                if (a + K > 'Z') {
+                    for (int j = 0; j<K; j++) {
+                        a++;
+                        if (a > 'Z') {
+                            a = 'A';
+                        }
+                    }
+                } else {
+                    a += K;
+                }
+            }
+            sb.append(a);
+        }
+        System.out.println(sb);
+    }
+}
