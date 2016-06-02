@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+
+
+        for (int a0 = 0; a0 < t; a0++) {
+            long totalCost = 0;
+            long b = in.nextLong();
+            long w = in.nextLong();
+            long x = in.nextLong();
+            long y = in.nextLong();
+            long z = in.nextLong();
+
+            long Attempt = 0;
+            if ((b * x) <= (w * (y + z)) && (w * y) <= (b * (x + z))) {
+                Attempt = (b * x) + (w * y);
+            } else if ((b * x) > (w * (y + z)) && (w * y) <= (b * (x + z))) {
+                Attempt =  (b * (y + z)) + (w * y);
+            } else if ((b * x) <= (w * (y + z)) && (w * y) > (b * (x + z))) {
+                Attempt = (b * x) + (w * (x + z));
+            }
+            System.out.println(Attempt);
+        }
+    }
+}
