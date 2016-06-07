@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+
+        Scanner sc = new Scanner(System.in);
+        int p = sc.nextInt();
+        int q = sc.nextInt();
+
+        String answer = "";
+
+
+        for (int i = p; i <= q; i++) {
+            if (Math.pow(i, 2) % 1 == 0) {
+                long a = (int) Math.pow(i, 2);
+                String strA = "" + a;
+                int length = strA.length();
+                int halfLength = length / 2;
+
+                int firstHalfInt = 0;
+                int secondHalfInt = 0;
+
+                if (i == 1) {
+                    answer = i + " ";
+                }
+
+                if (length > 1) {
+                    String firstHalfStr = strA.substring(0, halfLength);
+                    String secondHalfStr = strA.substring(halfLength);
+                    firstHalfInt = Integer.parseInt(firstHalfStr);
+                    secondHalfInt = Integer.parseInt(secondHalfStr);
+
+                    if (firstHalfInt + secondHalfInt == i) {
+                        answer += i + " ";
+                    }
+                }
+
+                }
+            }
+        if (answer.equals("")) {
+            System.out.print("INVALID RANGE");
+        } else {
+            System.out.print(answer);
+        }
+    }
+}
