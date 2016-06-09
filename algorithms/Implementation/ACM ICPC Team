@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        int NumberOfPeople = sc.nextInt();
+        int NumberOfTopics = sc.nextInt();
+        int[][] PeopleTopicsIntArray = new int[NumberOfPeople][NumberOfTopics];
+
+        
+        String PeopleTopicsStr = "";
+        for (int i = 0; i < NumberOfPeople; i++) {
+            PeopleTopicsStr = sc.next();
+            for (int j = 0; j < NumberOfTopics; j++) {
+                PeopleTopicsIntArray[i][j] = Character.getNumericValue(PeopleTopicsStr.charAt(j));
+            }
+        }
+
+        for (int person = 0; person < NumberOfPeople; person++) {
+            for (int topic = 0; topic < NumberOfTopics; topic++) {
+                
+
+            }
+        }
+    }
+}
