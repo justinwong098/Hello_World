@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int NumberOfPeople = sc.nextInt();
+        int NumberOfTopics = sc.nextInt();
+        int HowManyTopics = 0;
+        int HowManyTeams = 0;
+
+
+        int[][] PeopleTopics = new int[NumberOfPeople][NumberOfTopics];
+
+        for (int i = 0; i < NumberOfPeople; i++) {
+            String PeopleStr = sc.next();
+            char[] PeopleCA = new char[NumberOfPeople];
+            PeopleCA = PeopleStr.toCharArray();
+            for (int j = 0; j < NumberOfTopics; j++) {
+                PeopleTopics[i][j] = PeopleCA[j] - '0';
+            }
+        }
+
+        int CountTopics = 0;
+        for (int i = 0; i < NumberOfPeople; i++) {
+            for (int j = 1; j < NumberOfPeople; j++) {
+                CountTopics = 0;
+                for (int k = 0; k < NumberOfTopics; k++) {
+                    if (PeopleTopics[i][k] == 1 || PeopleTopics[j][k] == 1) {
+                        CountTopics++;
+                    }
+                }
+
+                if (CountTopics == HowManyTopics) {
+                    HowManyTeams++;
+                }
+                if (CountTopics > HowManyTopics) {
+                    HowManyTeams = 1;
+                    HowManyTopics = CountTopics;
+                }
+            }
+        }
+        System.out.println(HowManyTopics);
+        System.out.println(HowManyTeams);
+
+    }
+}
