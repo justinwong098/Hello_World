@@ -24,8 +24,13 @@ public class Solution {
         }
 
         int CountTopics = 0;
-        for (int i = 0; i < NumberOfPeople; i++) {
-            for (int j = 1; j < NumberOfPeople; j++) {
+        // This is important to remember for future comparisons
+        for (int i = 0; i < NumberOfPeople - 1; i++) {
+        
+        
+            // setting j to i + 1 means that every time i increments, j is restarted to 1 above so that there is no redundancy
+            for (int j = i + 1; j < NumberOfPeople; j++) {
+        
                 CountTopics = 0;
                 for (int k = 0; k < NumberOfTopics; k++) {
                     if (PeopleTopics[i][k] == 1 || PeopleTopics[j][k] == 1) {
