@@ -1,0 +1,19 @@
+import java.io.*;
+import java.math.BigInteger;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int Number = sc.nextInt();
+
+        BigInteger factorial = BigInteger.valueOf(1);
+        for (int i = Number; i >= 1; i--) {
+            factorial = factorial.multiply(BigInteger.valueOf(i));
+        }
+
+        System.out.print(factorial);
+    }
+}
