@@ -1,0 +1,42 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int testCases = in.nextInt();
+
+
+        for (int a0 = 0; a0 < testCases; a0++) {
+            long totalCost = 0;
+            long blackGifts = in.nextLong();
+            long whiteGifts = in.nextLong();
+            long blackGiftCost = in.nextLong();
+            long whiteGiftCost = in.nextLong();
+            long exchangeRate = in.nextLong();
+
+            long costOfBlackGifts = blackGifts * blackGiftCost;
+            long costOfWhiteGifts = whiteGifts * whiteGiftCost;
+            long costOfBlackGiftExchange = blackGifts * (whiteGiftCost + exchangeRate);
+            long costOfWhiteGiftExchange = whiteGifts * (blackGiftCost + exchangeRate);
+
+
+            if (costOfBlackGifts > costOfBlackGiftExchange) {
+                totalCost += costOfBlackGiftExchange;
+            } else {
+                totalCost += costOfBlackGifts;
+            }
+
+            if (costOfWhiteGifts > costOfWhiteGiftExchange) {
+                totalCost += costOfWhiteGiftExchange;
+            } else {
+                totalCost += costOfWhiteGifts;
+            }
+            System.out.println(totalCost);
+        }
+    }
+}
