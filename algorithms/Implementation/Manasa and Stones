@@ -1,0 +1,39 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int testCases = sc.nextInt();
+
+        for (int i = 0; i < testCases; i++) {
+            StringBuilder solution = new StringBuilder();
+            int numberOfStones = sc.nextInt();
+            int firstDifference = sc.nextInt();
+            int secondDifference = sc.nextInt();
+
+
+
+            if (firstDifference < secondDifference) {
+                for (int j = 0; j < numberOfStones; j++) {
+                    solution.append(((firstDifference * (numberOfStones - 1)) - (firstDifference * j))
+                            + (secondDifference * j));
+                    solution.append(" ");
+                }
+            } else if (firstDifference > secondDifference){
+                for (int j = 0; j < numberOfStones; j++) {
+                    solution.append(((secondDifference * (numberOfStones - 1)) - (secondDifference * j))
+                            + (firstDifference * j));
+                    solution.append(" ");
+                }
+            } else {
+                solution.append(firstDifference * (numberOfStones - 1));
+                solution.append(" ");
+            }
+
+            System.out.println(solution);
+        }
+    }
+}
