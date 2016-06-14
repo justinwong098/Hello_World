@@ -1,0 +1,46 @@
+import java.util.*;
+
+public class Solution {
+
+
+    static List<String> initialList = new ArrayList<String>();
+    static List<String> deleteList = new ArrayList<String>();
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int length = sc.nextInt();
+        String Str = sc.next();
+        char[] originalCA = Str.toCharArray();
+        char[] sortedCA = Str.toCharArray();
+        Arrays.sort(sortedCA);
+        int countLetterOccurrences = 1;
+        int limit = Str.length() / 4;
+
+
+
+        for (int j = 0; j < length - 1; j++) {
+            if (sortedCA[j] == sortedCA[j + 1]) {
+                countLetterOccurrences++;
+                if (countLetterOccurrences > limit) {
+                    listBuilder(originalCA, length, sortedCA);
+                    break;
+                }
+            }
+        }
+    }
+
+
+    public static void listBuilder(char[] originalCA, int length, char[] sorted) {
+        for (int i = 0; i < length; i++) {
+            initialList.add("" + originalCA[i]);
+            deleteList.add("" + originalCA[i]);
+            secondHelperMethod(initialList, deleteList, sorted);
+        }
+    }
+
+    public static void secondHelperMethod(List<String> init, List<String> delete, char[] sorted) {
+        
+
+    }
+}
