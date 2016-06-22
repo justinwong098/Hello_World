@@ -6,40 +6,41 @@ public class Solution {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        String strT = sc.nextLine();
-        int T = Integer.parseInt(strT);
+        int testCases = sc.nextInt();
+
+        for (int i = 0; i < testCases; i++) {
+
+            String string = sc.next();
+            int stringLength = string.length();
+            if ((stringLength & 1) == 0) {
+                StringBuilder firstHalf = new StringBuilder(string.substring(0, stringLength / 2));
+                StringBuilder secondHalf = new StringBuilder(string.substring(stringLength / 2));
 
 
+                int finalPrintAcc = 0;
+                for (int j = 0; j < firstHalf.length(); j++) {
+                    int countMissMatches = 0;
+                    for (int k = 0; k < firstHalf.length(); k++) {
 
+                        if (firstHalf.charAt(j) == secondHalf.charAt(k)) {
+                            secondHalf.deleteCharAt(k);
+                            secondHalf.append(" ");
+                            break;
 
-        while (T > 0) {
-            T--;
-
-            String str = sc.nextLine();
-            int length = str.length();
-
-            String str1 = str.substring(0, length / 2);
-            String str2 = str.substring(length / 2, length);
-
-
-            if ((length & 1) != 0) {
-                System.out.println(-1);
-
-            } else {
-                StringBuilder answer = new StringBuilder();
-
-
-                for (int i = 0; i < str1.length(); i++) {
-                    if (str2.contains(str1.substring(i, i+1))){
-                        str2.replace(str1.charAt(i), '0');
-                        answer.append(str1.substring(i, i+1));
+                        } else {
+                            countMissMatches++;
+                            if (countMissMatches == firstHalf.length()) {
+                                finalPrintAcc++;
+                            }
+                        }
                     }
                 }
+                System.out.println(finalPrintAcc);
 
-                System.out.println(str1.length() - answer.length());
 
-                }
-
+            } else {
+                System.out.println(-1);
             }
         }
     }
+}
