@@ -15,24 +15,23 @@ public class Solution {
 
             int indexToRemove = -1;
 
-            //if ((string.length() & 1) == 0) {
-                for (int i = 0, j = string.length() - 1; i < string.length() / 2; i++, j--) {
-                    char iChar = string.charAt(i);
-                    char jChar = string.charAt(j);
-                    if (iChar != jChar) {
-                        if ((string.charAt(i) == string.charAt(j - 1)) && (string.charAt(i + 1) != string.charAt(j))) {
-                            indexToRemove = j;
-                            break;
-                        } else if ((string.charAt(i + 1) == string.charAt(j))) {
-                            indexToRemove = i;
-                            break;
-                        }
+            for (int i = 0, j = string.length() - 1; i < string.length() / 2; i++, j--) {
+                char iChar = string.charAt(i);
+                char jChar = string.charAt(j);
+                if (iChar != jChar) {
+                    if ((string.charAt(i) == string.charAt(j - 1)) && (string.charAt(i + 1) == string.charAt(j - 2))) {
+                        indexToRemove = j;
+                        break;
+                    } else if ((string.charAt(i + 1) == string.charAt(j) && (string.charAt(i + 2) == (string.charAt(j - 1))))) {
+                        indexToRemove = i;
+                        break;
                     }
                 }
-
-
-
-                System.out.println(indexToRemove);
             }
+
+
+
+            System.out.println(indexToRemove);
         }
     }
+}
