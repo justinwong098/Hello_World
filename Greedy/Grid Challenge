@@ -1,0 +1,62 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int testCases = sc.nextInt();
+
+
+        while (testCases > 0) {
+            testCases--;
+
+            int N = sc.nextInt();
+
+            char[][] grid = new char[N][N];
+
+
+            // populate grid
+            for (int i = 0; i < N; i++) {
+                char[] row = new char[N];
+                String rows = sc.next();
+                row = rows.toCharArray();
+                for (int j = 0; j < N; j++) {
+                    grid[i][j] = row[j];
+                }
+            }
+
+            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < N; j++) {
+                    for (int k = j + 1; k < N; k++) {
+                        if (grid[i][j] > grid[i][k]) {
+                            char temp1 = grid[i][j];
+                            char temp2 = grid[i][k];
+                            grid[i][j] = temp2;
+                            grid[i][k] = temp1;
+                        }
+                    }
+                }
+            }
+
+            boolean result = true;
+            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < N; j++) {
+                    for (int k = j + 1; k < N; k++) {
+                        if (grid[j][i] > grid[k][i]) {
+                            result = false;
+                        }
+
+                    }
+                }
+            }
+
+            if (result) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+        }
+    }
+}
