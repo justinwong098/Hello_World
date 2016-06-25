@@ -1,0 +1,39 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int numberOfGifts = sc.nextInt();
+        int cash = sc.nextInt();
+
+        int[] gifts = new int[numberOfGifts];
+        for (int i = 0; i < numberOfGifts; i++) {
+            gifts[i] = sc.nextInt();
+        }
+
+        for (int i = 0; i < numberOfGifts; i++) {
+            for (int j = i + 1; j < numberOfGifts; j++) {
+                if (gifts[i] > gifts[j]) {
+                    int temp1 = gifts[i];
+                    int temp2 = gifts[j];
+                    gifts[i] = temp2;
+                    gifts[j] = temp1;
+                }
+            }
+        }
+
+        int result = 0;
+        for (int i = 0; i < numberOfGifts; i++) {
+            if (cash - gifts[i] >= 0) {
+                cash -= gifts[i];
+                result++;
+            }
+        }
+
+        System.out.print(result);
+    }
+}
