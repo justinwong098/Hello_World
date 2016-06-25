@@ -1,0 +1,43 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+
+        int[][] array = new int[N][2];
+
+
+        // populate array: i0 is order number, i1 is time
+        for (int i = 0; i < N; i++) {
+            int T = sc.nextInt();
+            int D = sc.nextInt();
+
+            array[i][0] = i + 1;
+            array[i][1] = T + D;
+        }
+
+        for (int i = 0; i < N; i++) {
+            for (int j = i + 1; j < N; j++) {
+
+                if (array[i][1] > array[j][1]) {
+                    int tempTime1 = array[i][1];
+                    int tempTime2 = array[j][1];
+                    int tempOrder1 = array[i][0];
+                    int tempOrder2 = array[j][0];
+                    array[i][1] = tempTime2;
+                    array[j][1] = tempTime1;
+                    array[i][0] = tempOrder2;
+                    array[j][0] = tempOrder1;
+                }
+            }
+        }
+
+        for (int i = 0; i < N; i++) {
+            System.out.print(array[i][0] + " ");
+        }
+    }
+}
