@@ -22,23 +22,55 @@ public class Solution {
         }
 
 
-        int count = 0;
+        int countPairs = 0;
+        int tempAVal = 0;
+        int tempBVal = 0;
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 if ((A[i] == B[j]) && (A[i] != -1)) {
-                    count++;
+                    countPairs++;
                     A[i] = -1;
                     B[j] = -1;
                     break;
-
                 }
-
             }
         }
 
 
 
-        count++;
-        System.out.println(count);
+        if (countPairs < N) {
+            countPairs++;
+        }
+        int countNonPairs = 0;
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (A[i] != -1) {
+                    countNonPairs++;
+                }
+            }
+        }
+
+        int[] secondRoundA = new int[countNonPairs];
+        int[] secondRoundB = new int[countNonPairs];
+
+        for (int i = 0; i < countNonPairs; i++) {
+            for (int j = 0; j < countNonPairs; j++) {
+                for (int k = 0; k < N; k++) {
+                    if (A[k] != -1) {
+                        secondRoundA[i] = A[k];
+                    }
+                    if (B[k] != -1) {
+                        secondRoundB[j] = B[k];
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < countNonPairs; i++) {
+            for (int j = 0; j < countNonPairs; j++) {
+            }
+            }
+
+        System.out.println(countPairs);
     }
 }
