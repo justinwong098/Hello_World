@@ -1,0 +1,54 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int testCases = sc.nextInt();
+
+        while (testCases > 0) {
+
+            int N = sc.nextInt();
+            int K = sc.nextInt();
+            int[] arrayA = new int[N];
+            for (int i = 0; i < N; i++) {
+                arrayA[i] = sc.nextInt();
+            }
+            Arrays.sort(arrayA);
+
+
+            int[] arrayB = new int[N];
+            for (int i = 0; i < N; i++) {
+                arrayB[i] = sc.nextInt();
+            }
+            for (int i = 0; i < N; i++) {
+                for (int j = i + 1; j < N; j++) {
+                    if (arrayB[i] < arrayB[j]) {
+                        int temp1 = arrayB[i];
+                        int temp2 = arrayB[j];
+                        arrayB[i] = temp2;
+                        arrayB[j] = temp1;
+                    }
+                }
+            }
+
+            boolean result = true;
+            for (int i = 0; i < N; i++) {
+                if (arrayA[i] + arrayB[i] < K) {
+                    result = false;
+                }
+            }
+
+            if (result) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+
+
+        }
+    }
+}
