@@ -1,0 +1,56 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int K = sc.nextInt();
+
+        int[] array = new int[N];
+        int[] optimalSwapsArray = new int[N];
+        for (int i = 0; i < N; i++) {
+            array[i] = sc.nextInt();
+        }
+
+        int[] sortedArrayBigToSmall = new int[N];
+        for (int i = 0; i < N; i++) {
+            sortedArrayBigToSmall[i] = array[i];
+            optimalSwapsArray[i] = array[i];
+        }
+
+        for (int i = 0; i < N; i++) {
+            for (int j = i + 1; j < N; j++) {
+                int temp1 = sortedArrayBigToSmall[i];
+                int temp2 = sortedArrayBigToSmall[j];
+                if (temp1 < temp2) {
+                    sortedArrayBigToSmall[i] = temp2;
+                    sortedArrayBigToSmall[j] = temp1;
+                }
+            }
+        }
+
+        int[] bigSwaps = new int[K];
+        int[] littleSwaps = new int[K];
+        for (int i = 0, j = sortedArrayBigToSmall.length - 1; i < K; i++) {
+            bigSwaps[i] = sortedArrayBigToSmall[i];
+            littleSwaps[i] = sortedArrayBigToSmall[j - i];
+        }
+
+        for (int i = 0; i < K; i++) {
+            int temp1 = optimalSwapsArray[i];
+            optimalSwapsArray[i] = bigSwaps[i];
+            for (int j = i + 1; j < N; j++) {
+                if (bigSwaps[i] == optimalSwapsArray[j]) {
+                    optimalSwapsArray[j] = temp1;
+                }
+            }
+        }
+
+        for (int i = 0; i < N; i++) {
+            System.out.print(optimalSwapsArray[i] + " ");
+        }
+    }
+}
