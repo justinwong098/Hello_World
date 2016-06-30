@@ -1,0 +1,25 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int L = sc.nextInt();
+        int R = sc.nextInt();
+
+        int maxValue = Integer.MIN_VALUE;
+
+        for (int i = L; i <= R; i++) {
+            for (int j = L; j <= R; j++) {
+                if ((i ^ j) > maxValue) {
+                    maxValue = i^j;
+                }
+            }
+        }
+
+        System.out.println(maxValue);
+
+    }
+}
