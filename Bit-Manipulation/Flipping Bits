@@ -1,0 +1,30 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+
+        while (T > 0) {
+            T--;
+
+            long input = sc.nextLong();
+            String binaryString = Long.toBinaryString(input);
+            for (int i = 0; i <= 32; i++) {
+                if (binaryString.length() < 32) {
+                    binaryString = "0" + binaryString;
+                }
+            }
+            String string1 = binaryString.replace('1', '2');
+            String string2 = string1.replace('0', '1');
+            String string3 = string2.replace('2', '0');
+
+            long total = Long.parseLong(string3, 2);
+
+            System.out.println(total);
+        }
+    }
+}
