@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        int testCases = sc.nextInt();
+        
+        
+        while (testCases > 0) {
+            testCases--;
+            
+            int numberOfPrisoners = sc.nextInt();
+            int numberOfSweets = sc.nextInt();
+            int firstPrisonerID = sc.nextInt();
+            
+            
+            int result = 0;
+            if (numberOfSweets + firstPrisonerID - 1 > numberOfPrisoners) {
+                result = (numberOfSweets + firstPrisonerID - 1) % numberOfPrisoners;
+            } else {
+                result = numberOfSweets + firstPrisonerID - 1;
+            }
+            if (result == 0) {
+                result = numberOfPrisoners;
+            }
+            
+            System.out.println(result);
+        }
+    }
+}
