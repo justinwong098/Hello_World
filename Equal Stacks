@@ -1,0 +1,80 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int numberOfCylindersInStack1 = in.nextInt();
+        int numberOfCylindersInStack2 = in.nextInt();
+        int numberOfCylindersInStack3 = in.nextInt();
+
+        int cylinderStack1[] = new int[numberOfCylindersInStack1];
+
+        for (int h1_i = 0; h1_i < numberOfCylindersInStack1; h1_i++) {
+            cylinderStack1[h1_i] = in.nextInt();
+        }
+
+        int cylinderStack2[] = new int[numberOfCylindersInStack2];
+        for (int h2_i = 0; h2_i < numberOfCylindersInStack2; h2_i++) {
+            cylinderStack2[h2_i] = in.nextInt();
+        }
+
+        int cylinderStack3[] = new int[numberOfCylindersInStack3];
+        for (int h3_i = 0; h3_i < numberOfCylindersInStack3; h3_i++) {
+            cylinderStack3[h3_i] = in.nextInt();
+        }
+
+
+        if (cylinderStackHeight(cylinderStack1) > cylinderStackHeight(cylinderStack2)) {
+            trim(cylinderStack1, cylinderStack2);
+        } else if (cylinderStackHeight(cylinderStack1) < cylinderStackHeight(cylinderStack2)) {
+            trim(cylinderStack2, cylinderStack1);
+        }
+
+
+        if (cylinderStackHeight(cylinderStack2) > cylinderStackHeight(cylinderStack3)) {
+            trim(cylinderStack2, cylinderStack3);
+        } else if (cylinderStackHeight(cylinderStack2) < cylinderStackHeight(cylinderStack3)) {
+            trim(cylinderStack2, cylinderStack3);
+        }
+
+        if (cylinderStackHeight(cylinderStack1) == cylinderStackHeight(cylinderStack2) && (cylinderStackHeight(cylinderStack2) == cylinderStackHeight(cylinderStack3))) {
+            System.out.print(cylinderStackHeight(cylinderStack1));
+        } else {
+            System.out.print(0);
+        }
+
+
+    }
+
+    static int cylinderStackHeight(int[] cylinder) {
+        int temp = 0;
+        for (int i = 0; i < cylinder.length; i++) {
+            temp += cylinder[i];
+        }
+        return temp;
+    }
+
+    static void trim(int[] longerCylinder, int[] shorterCylinder) {
+        for (int i = 0; i < longerCylinder.length; i++) {
+            if (cylinderStackHeight(longerCylinder) > cylinderStackHeight(shorterCylinder)) {
+                longerCylinder[i] = 0;
+            }
+            if (cylinderStackHeight(longerCylinder) <= cylinderStackHeight(shorterCylinder)) {
+                break;
+            }
+        }
+
+        for (int i = 0; i < shorterCylinder.length; i++) {
+            if (cylinderStackHeight(shorterCylinder) > cylinderStackHeight(longerCylinder)) {
+                shorterCylinder[i] = 0;
+            }
+            if (cylinderStackHeight(shorterCylinder) <= cylinderStackHeight(longerCylinder)) {
+                break;
+            }
+        }
+    }
