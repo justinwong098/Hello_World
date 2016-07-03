@@ -1,0 +1,45 @@
+import java.io.*;
+import java.lang.Integer;
+import java.util.*;
+import java.util.InputMismatchException;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int K = sc.nextInt();
+
+        int[] array = new int[N];
+        for (int i = 0; i < N; i++) {
+            array[i] = sc.nextInt();
+        }
+
+        List<Integer> arrayList = new ArrayList<Integer>();
+        for (int i = 0; i < N; i++) {
+            if (arrayList.size() >= N) {
+                break;
+            }
+            for (int j = i + 1; j < N; j++) {
+                if (!((array[i] + array[j]) % K == 0)) {
+                    if (!arrayList.contains(array[i])) {
+                        arrayList.add(array[i]);
+                    }
+                    if (!arrayList.contains(array[j])) {
+                        arrayList.add(array[j]);
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < arrayList.size(); i++) {
+            for (int j = i + 1; j < arrayList.size(); j++) {
+                if ((arrayList.get(i) + arrayList.get(j)) % K == 0) {
+                    arrayList.remove(i);
+                    break;
+                }
+            }
+        }
+        System.out.println(arrayList.size());
+    }
+}
