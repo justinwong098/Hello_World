@@ -1,0 +1,117 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        Solution s = new Solution();
+
+
+
+
+        Scanner in = new Scanner(System.in);
+        int numberOfCylindersInStack1 = in.nextInt();
+        int numberOfCylindersInStack2 = in.nextInt();
+        int numberOfCylindersInStack3 = in.nextInt();
+
+
+        int cylinderStack1[] = new int[numberOfCylindersInStack1];
+        for (int h1_i = 0; h1_i < numberOfCylindersInStack1; h1_i++) {
+            cylinderStack1[h1_i] = in.nextInt();
+        }
+
+        int cylinderStack2[] = new int[numberOfCylindersInStack2];
+        for (int h2_i = 0; h2_i < numberOfCylindersInStack2; h2_i++) {
+            cylinderStack2[h2_i] = in.nextInt();
+        }
+
+        int cylinderStack3[] = new int[numberOfCylindersInStack3];
+        for (int h3_i = 0; h3_i < numberOfCylindersInStack3; h3_i++) {
+            cylinderStack3[h3_i] = in.nextInt();
+        }
+
+        int cylinderStackHeight1 = cylinderStackHeight(cylinderStack1);
+        int cylinderStackHeight2 = cylinderStackHeight(cylinderStack2);
+        int cylinderStackHeight3 = cylinderStackHeight(cylinderStack3);
+        in.close();
+
+
+        System.out.println(makeEqual(cylinderStack1, cylinderStackHeight1,
+                cylinderStack2, cylinderStackHeight2,
+                cylinderStack3, cylinderStackHeight3));
+    }
+
+
+    static int i1 = 0;
+    static int i2 = 0;
+    static int i3 = 0;
+    static int i4 = 0;
+    static int i5 = 0;
+    static int i6 = 0;
+
+
+    static int makeEqual(int[] cylinder1, int cylinder1Height,
+                          int[] cylinder2, int cylinder2Height,
+                          int[] cylinder3, int cylinder3Height) {
+
+
+            for (int i = i1; cylinder1Height > cylinder2Height && cylinder1Height > cylinder3Height; i++) {
+                cylinder1Height -= cylinder1[i];
+                if ((cylinder1Height <= cylinder2Height) || (cylinder1Height <= cylinder3Height))  {
+                    if (cylinder1Height != 0) {
+                        i1 = i + 1;
+                        break;
+                    } else {
+                        return 0;
+                    }
+                }
+            }
+
+
+            for (int i = i3; cylinder2Height > cylinder1Height && (cylinder2Height > cylinder3Height); i++) {
+                cylinder2Height -= cylinder2[i];
+                if ((cylinder2Height <= cylinder1Height) || (cylinder2Height <= cylinder3Height)) {
+                    if (cylinder2Height != 0)  {
+                        i3 = i + 1;
+                        break;
+                    } else {
+                        return 0;
+                    }
+                }
+            }
+
+            for (int i = i5; cylinder3Height > cylinder1Height && (cylinder3Height > cylinder2Height); i++) {
+                cylinder3Height -= cylinder3[i];
+                if ((cylinder3Height <= cylinder1Height) || (cylinder3Height <= cylinder2Height)) {
+                    if (cylinder3Height != 0) {
+                        i5 = i + 1;
+                        break;
+                    } else {
+                        return 0;
+                    }
+                }
+            }
+
+        if ((cylinder1Height == cylinder2Height) && (cylinder2Height == cylinder3Height)) {
+            return cylinder1Height;
+        } else {
+            return makeEqual(
+                    cylinder1, cylinder1Height,
+                    cylinder2, cylinder2Height,
+                    cylinder3, cylinder3Height);
+        }
+    }
+
+
+    static int cylinderStackHeight(int[] cylinder) {
+        int sum = 0;
+        for (int i = 0; i < cylinder.length; i++) {
+            sum += cylinder[i];
+        }
+        return sum;
+    }
+}
