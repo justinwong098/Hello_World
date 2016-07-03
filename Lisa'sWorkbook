@@ -2,50 +2,45 @@ import java.io.*;
 import java.util.*;
 
 public class Solution {
-   
-    
 
     public static void main(String[] args) {
-        
+
         Scanner sc = new Scanner(System.in);
-        
-        int N = sc.nextInt();
-        int K = sc.nextInt();
-        
-        //Populate array
-        
-        int acc = 0;
-        
-        int[] problemsPerChapter = new int[N];
-        
-        for (int i = 0; i < N; i++) {
-            problemsPerChapter[i] = sc.nextInt();
-        }
-        
-        int currentPage = 1;
-        
-        
-        
-        
-        for (int i = 0; i < N; i++) {
-            
-            currentPage = problemsPerChapter[i]
-            
-            if (currentPage == currentProblem) {
-                specialProblems++;
+        int numberOfChapters = sc.nextInt();
+        int maxProblemsPerPage = sc.nextInt();
+        int[] problemsInChapter = new int[numberOfChapters];
+
+        int specialProblems = 0;
+        int chapter = 0;
+        int problemNumberInThisChapter = 0;
+        int pageNumber = 0;
+
+        while (chapter < numberOfChapters) {
+            chapter++;
+            pageNumber++;
+            problemNumberInThisChapter = 1;
+            int problemsInThisChapter = sc.nextInt();
+            int problemOnThisPage = 1;
+
+
+            while (problemsInThisChapter > 0) {
+                problemsInThisChapter--;
+
+                if (pageNumber == problemNumberInThisChapter) {
+                    specialProblems++;
+                }
+
+                problemNumberInThisChapter++;
+                problemOnThisPage++;
+
+                if ((problemOnThisPage > maxProblemsPerPage) && (problemsInThisChapter > 0)) {
+                    pageNumber++;
+                    problemOnThisPage = 1;
+                }
             }
-            
-            
-           
-            
-            
-        
-        
         }
-    
-    
+        System.out.print(specialProblems);
     }
-      
-        
+}
         
         
