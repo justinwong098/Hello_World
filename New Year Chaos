@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int testCases = sc.nextInt();
+
+        while (testCases > 0) {
+            testCases--;
+
+            int numberOfPeopleInLine = sc.nextInt();
+
+
+            int[] afterLineUp = new int[numberOfPeopleInLine];
+            int[] initialLineUp = new int[numberOfPeopleInLine];
+            List<Integer> aLAfterLineUp = new ArrayList<Integer>();
+            List<Integer> aLInitialLineUp = new ArrayList<Integer>();
+            for (int i = 0; i < numberOfPeopleInLine; i++) {
+                afterLineUp[i] = sc.nextInt();
+                aLAfterLineUp.add(afterLineUp[i]);
+                initialLineUp[i] = i + 1;
+                aLInitialLineUp.add(initialLineUp[i]);
+            }
+
+            boolean result = false;
+            int countSwaps = 2;
+            int count = 0;
+            for (int i = 0; i < numberOfPeopleInLine; i++) {
+                int a = i - aLAfterLineUp.indexOf(initialLineUp[i]);
+                if (a > 2) {
+                    result = true;
+                    break;
+                } else {
+                    count += a;
+                    countSwaps += a;
+                }
+
+            }
+            if (result) {
+                System.out.println("Too chaotic");
+            } else {
+                System.out.println(count / 2);
+            }
+        }
+    }
+}
