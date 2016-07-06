@@ -1,0 +1,12 @@
+
+    public static void insertIntoSorted(int[] ar) {
+        for (int i = ar.length - 1; i > 0; i--) {
+            if (ar[i] < ar[i - 1]) {
+                int elementToBeShifted = ar[i];
+                    ar[i] = ar[i - 1];
+                printArray(ar);
+                ar[i - 1] = elementToBeShifted;
+            }
+        }
+        printArray(ar);
+    }
