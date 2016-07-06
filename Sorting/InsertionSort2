@@ -1,0 +1,38 @@
+public static void insertionSortPart2(int[] ar) {
+        int[] temp = buildCopyArray(ar);
+
+
+        for (int i = 0; i < ar.length; i++) {
+            for (int j = 0; j < ar.length; j++) {
+                if (ar[i] < ar[j]) {
+                    int temp1 = ar[i];
+                    int temp2 = ar[j];
+                    ar[i] = temp2;
+                    ar[j] = temp1;
+                }
+            }
+            if (!twoArraysEqual(ar, temp)) {
+                printArray(ar);
+            }
+        }
+    }
+
+
+    public static int[] buildCopyArray(int[] ar) {
+        int[] temp = new int[ar.length];
+
+        for (int i = 0; i < ar.length; i++) {
+            temp[i] = ar[i];
+        }
+        return temp;
+    }
+
+    public static boolean twoArraysEqual(int[] ar, int[] temp) {
+        boolean result = true;
+        for (int i = 0; i < ar.length; i++) {
+            if (ar[i] != temp[i]) {
+                result = false;
+            }
+        }
+        return result;
+    }
