@@ -1,0 +1,51 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    static List<Integer> middle = new ArrayList<Integer>();
+    static List<Integer> less = new ArrayList<Integer>();
+    static List<Integer> greater = new ArrayList<Integer>();
+
+    public static void printElements(List<Integer> list) {
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i) + " ");
+        }
+    }
+
+
+    public static void partitionSort(int[] a) {
+        int p = a[0];
+
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] < p) {
+                less.add(a[i]);
+            } else if (a[i] > p) {
+                greater.add(a[i]);
+            } else {
+                middle.add(a[i]);
+            }
+        }
+
+        printElements(less);
+        printElements(middle);
+        printElements(greater);
+    }
+
+
+
+    public static void main(String[] args) {
+
+
+
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] array = new int[n];
+
+        for (int i = 0; i < array.length; i++) {
+            array[i] = sc.nextInt();
+        }
+
+        partitionSort(array);
+    }
+}
