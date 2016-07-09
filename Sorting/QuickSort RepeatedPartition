@@ -1,0 +1,85 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static List<Integer> comparison = new ArrayList<Integer>();
+
+    public static void printListOnLine(List<Integer> list) {
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i) + " ");
+        }
+        System.out.println();
+    }
+
+    public static void helperSortMethod(List<Integer> list) {
+        for (int i = 0; i < list.size() - 1; i++) {
+            if (list.get(i) > list.get(i + 1)) {
+                int temp1 = list.get(i);
+                list.remove(i);
+                list.add(i + 1, temp1);
+                for (int j = i; j > 0; j--) {
+                    if (list.get(j) < list.get(j - 1)) {
+                        int temp2 = list.get(j);
+                        list.remove(j);
+                        list.add(j - 1, temp2);
+                    }
+                }
+            }
+        }
+
+    }
+
+    public static void continuousPartition(List<Integer> a) {
+        List<Integer> greater = new ArrayList<Integer>();
+        List<Integer> less = new ArrayList<Integer>();
+        int middle = Integer.MAX_VALUE;
+
+        if (a.size() != 0) {
+            middle = a.get(0);
+
+            if (a.size() > 1) {
+                for (int i = 0; i < a.size(); i++) {
+                    if (a.get(i) > middle) {
+                        greater.add(a.get(i));
+
+                    } else if (a.get(i) < middle) {
+                        less.add(a.get(i));
+                    }
+                }
+
+                if (less.size() > 1) {
+                    continuousPartition(less);
+                    helperSortMethod(less);
+                    printListOnLine(less);
+                }
+                if (greater.size() > 1) {
+                    continuousPartition(greater);
+                    helperSortMethod(greater);
+                    printListOnLine(greater);
+                }
+            }
+        }
+        less.add(middle);
+        less.addAll(greater);
+        if (a.size() == comparison.size()) {
+            printListOnLine(less);
+        }
+    }
+
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int s = sc.nextInt();
+        List<Integer> array = new ArrayList<Integer>();
+
+        for (int i = 0; i < s; i++) {
+            array.add(sc.nextInt());
+            comparison.add(array.get(i));
+        }
+
+
+        continuousPartition(array);
+    }
+}
