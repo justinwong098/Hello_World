@@ -1,51 +1,21 @@
-    public static void insertionSortPart2(int[] ar) {
-        int elementToBeShiftedDown = 0;
-        int lastIndexOfGreaterElement = 0;
-        int valueOfLastIndex = 0;
+     public static void insertionSortPart2(int[] ar) {
         for (int i = 0; i < ar.length - 1; i++) {
             if (ar[i] > ar[i + 1]) {
-                elementToBeShiftedDown = ar[i + 1];
-                lastIndexOfGreaterElement = i;
-                valueOfLastIndex = ar[i];
-                for (int j = i; j >= 0; j--) {
-                    if ((ar[j] > elementToBeShiftedDown) && (ar[j] < valueOfLastIndex)) {
-                        lastIndexOfGreaterElement = j;
-                        valueOfLastIndex = ar[j];
-
-                    }
-
-                }
-                helperMethod(ar, elementToBeShiftedDown, i + 1, lastIndexOfGreaterElement, valueOfLastIndex);
+                int temp = ar[i];
+                ar[i] = ar[i + 1];
+                ar[i + 1] = temp;
+                insertIntoSortedList(ar, i, ar[i]);
             }
             printArray(ar);
         }
     }
 
-    public static void helperMethod(int[] ar, int elementToBeShiftedDown, int iPlusOne, int lastIndexOfGreaterElement, int valueOfLastIndex) {
-        ar[lastIndexOfGreaterElement] = elementToBeShiftedDown;
-        ar[iPlusOne] = valueOfLastIndex;
-        ifElementsAreStillOutOfOrder(ar, elementToBeShiftedDown, lastIndexOfGreaterElement, valueOfLastIndex);
-    }
-
-    public static void ifElementsAreStillOutOfOrder(int[] ar, int elementThatWasShiftedDown, int lastIndexOfGreaterElement, int elementThatWasShiftedUp) {
-        int temp = -1;
-        for (int i = 0; i < ar.length - 1; i++) {
-            if ((elementThatWasShiftedUp > ar[i]) && (elementThatWasShiftedUp < ar[i + 1])) {
-                temp = ar[i + 1];
-                ar[i + 1] = elementThatWasShiftedUp;
-                bumpElementsUp(ar, temp, i + 1);
-            }
-        }
-    }
-
-    public static void bumpElementsUp(int[] ar, int criticalValue, int index) {
-        for (int i = 0; i < ar.length - 1; i++) {
-            if ((criticalValue > ar[i]) && (criticalValue < ar[i + 1])) {
-                int temp = ar[i + 1];
-                ar[i + 1] = criticalValue;
-                bumpElementsUp(ar, temp, i);
-            } else if ((criticalValue > ar[i + 1]) && (ar.length - 1 == i + 1)) {
-                ar[i + 1] = criticalValue;
+    public static void insertIntoSortedList(int[] ar, int index, int addedElement) {
+        for (int i = index; i > 0; i--) {
+            if (ar[i] < ar[i - 1]) {
+                int temp = ar[i];
+                ar[i] = ar[i - 1];
+                ar[i - 1] = temp;
             }
         }
     }
