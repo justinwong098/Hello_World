@@ -4,13 +4,13 @@
                 int temp = ar[i];
                 ar[i] = ar[i + 1];
                 ar[i + 1] = temp;
-                insertIntoSortedList(ar, i, ar[i]);
+                insertIntoSortedListFromTop(ar, i, ar[i]);
             }
             printArray(ar);
         }
     }
 
-    public static void insertIntoSortedList(int[] ar, int index, int addedElement) {
+    public static void insertIntoSortedListFromTop(int[] ar, int index, int addedElement) {
         for (int i = index; i > 0; i--) {
             if (ar[i] < ar[i - 1]) {
                 int temp = ar[i];
