@@ -3,82 +3,100 @@ import java.util.*;
 
 public class Solution {
 
+    public static int[] singlesMore(int middle, int more) {
+        int[] newArray = new int[2];
+        newArray[0] = middle;
+        newArray[1] = more;
+        return newArray;
+    }
+
+    public static int[] singlesLess(int less, int middle) {
+        int[] newArray = new int[2];
+        newArray[0] = less;
+        newArray[1] = middle;
+        return newArray;
+    }
+
+    public static int[] singlesBoth(int less, int middle, int more) {
+        int[] newArray = new int[3];
+        newArray[0] = less;
+        newArray[1] = middle;
+        newArray[2] = more;
+        return newArray;
+    }
+
     public static int[] putBackTogether(int[] less, int middle, int[] more) {
         int length = less.length + more.length + 1;
         int[] newArray = new int[length];
 
+
+        for (int i = 0, j = 0, k = 0; i < length; i++) {
+            if (j < less.length) {
+                newArray[i] = less[j];
+                j++;
+            } else if (i == less.length) {
+                newArray[i] = middle;
+            } else {
+                newArray[i] = more[k];
+                k++;
+            }
+        }
         if (less.length > 1) {
             takeApart(less);
-
         }
         if (more.length > 1) {
             takeApart(more);
         }
 
-        if ((less.length > 0) || (more.length > 0)) {
-            for (int i = 0, j = 0, k = 0; i < length; i++) {
-                if (j < less.length) {
-                    newArray[i] = less[j];
-                    j++;
-                } else if (i == less.length) {
-                    newArray[i] = middle;
-                } else {
-                    newArray[i] = more[k];
-                    k++;
-                }
-            }
+        if ((less.length == 1) && (more.length == 1)) {
+            printArray(singlesBoth(less[0], middle, more[0]));
+        } else if (less.length == 1) {
+            printArray(singlesLess(less[0], middle));
+        } else if (more.length == 1) {
+            printArray(singlesMore(middle, more[0]));
         }
         return newArray;
     }
 
+
+
     static void takeApart(int[] a) {
-        int[] newArray = new int[a.length];
-        int countMore = 0;
-        int countLess = 0;
+        // count the size of the arrays
+        int moreLength = 0;
+        int lessLength = 0;
         if (a.length > 1) {
             int middle = a[0];
 
-            // count the size of the arrays
+
             for (int i = 1; i < a.length; i++) {
                 if (a[i] > middle) {
-                    countMore++;
+                    moreLength++;
                 } else {
-                    countLess++;
+                    lessLength++;
                 }
             }
-
-
-            // populate the arrays if counts are greater than 0
-            int[] less = new int[countLess];
-            int[] more = new int[countMore];
-            if (countLess > 0) {
-                for (int i = 1, j = 0; i < a.length; i++) {
-                    if (a[i] < middle) {
-                        less[j] = a[i];
-                        j++;
-                    }
-                }
-            }
-
-
-            if (countMore > 0) {
-                for (int i = 1, j = 0; i < a.length; i++) {
-                    if (a[i] > middle) {
-                        more[j] = a[i];
-                        j++;
-                    }
-                }
-            }
-
-
-            printArray(putBackTogether(less, middle, more));
-
-
         }
 
+        // populate the arrays if counts are greater than 0
+        int[] less = new int[lessLength];
+        int[] more = new int[moreLength];
+        if ((lessLength > 1) || (moreLength > 1)) {
+            for (int i = 1, j = 0, k = 0; i < a.length; i++) {
+                if (a[i] < a[0]) {
+                    less[j] = a[i];
+                    j++;
+                } else {
+                    more[k] = a[i];
+                    k++;
+                }
+            }
+        }
+
+        // recursion
+        if (a.length > 0) {
+            putBackTogether(less, a[0], more);
+        }
     }
-
-
 
 
     public static void main(String[] args) {
@@ -98,11 +116,9 @@ public class Solution {
     }
 
 
-
     public static void printArray(int[] list) {
         for (int i = 0; i < list.length; i++) {
             System.out.print(list[i] + " ");
         }
         System.out.println();
     }
-}
