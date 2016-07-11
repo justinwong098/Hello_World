@@ -3,82 +3,67 @@ import java.util.*;
 
 public class Solution {
 
-    public static int[] putBackTogether(int[] less, int middle, int[] more) {
-        int length = less.length + more.length + 1;
-        int[] newArray = new int[length];
+    static void takeApart(int[] a) {
+        // count the size of the arrays
+        int moreLength = 0;
+        int lessLength = 0;
+        if (a.length > 1) {
+            int middle = a[0];
 
+
+            for (int i = 1; i < a.length; i++) {
+                if (a[i] > middle) {
+                    moreLength++;
+                } else {
+                    lessLength++;
+                }
+            }
+        }
+
+        // populate the arrays if counts are greater than 0
+        int[] less = new int[lessLength];
+        int[] more = new int[moreLength];
+        if ((lessLength > 0) || (moreLength > 0)) {
+            for (int i = 1, j = 0, k = 0; i < a.length; i++) {
+                if (a[i] < a[0]) {
+                    less[j] = a[i];
+                    j++;
+                } else {
+                    more[k] = a[i];
+                    k++;
+                }
+            }
+        }
+
+        // recursion
         if (less.length > 1) {
             takeApart(less);
-
         }
         if (more.length > 1) {
             takeApart(more);
         }
 
-        if ((less.length > 0) || (more.length > 0)) {
+
+        // rebuild array
+        int length = a.length;
+        int tempMiddle = a[0];
+
+        if (a.length > 0) {
             for (int i = 0, j = 0, k = 0; i < length; i++) {
                 if (j < less.length) {
-                    newArray[i] = less[j];
+                    a[i] = less[j];
                     j++;
                 } else if (i == less.length) {
-                    newArray[i] = middle;
+                    a[i] = tempMiddle;
                 } else {
-                    newArray[i] = more[k];
+                    a[i] = more[k];
                     k++;
                 }
             }
         }
-        return newArray;
+
+        printArray(a);
     }
-
-    static void takeApart(int[] a) {
-        int[] newArray = new int[a.length];
-        int countMore = 0;
-        int countLess = 0;
-        if (a.length > 1) {
-            int middle = a[0];
-
-            // count the size of the arrays
-            for (int i = 1; i < a.length; i++) {
-                if (a[i] > middle) {
-                    countMore++;
-                } else {
-                    countLess++;
-                }
-            }
-
-
-            // populate the arrays if counts are greater than 0
-            int[] less = new int[countLess];
-            int[] more = new int[countMore];
-            if (countLess > 0) {
-                for (int i = 1, j = 0; i < a.length; i++) {
-                    if (a[i] < middle) {
-                        less[j] = a[i];
-                        j++;
-                    }
-                }
-            }
-
-
-            if (countMore > 0) {
-                for (int i = 1, j = 0; i < a.length; i++) {
-                    if (a[i] > middle) {
-                        more[j] = a[i];
-                        j++;
-                    }
-                }
-            }
-
-
-            printArray(putBackTogether(less, middle, more));
-
-
-        }
-
-    }
-
-
 
 
     public static void main(String[] args) {
@@ -96,7 +81,6 @@ public class Solution {
         }
         takeApart(array);
     }
-
 
 
     public static void printArray(int[] list) {
