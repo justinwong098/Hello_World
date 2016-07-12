@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        Solution solution = new Solution();
+        int n = sc.nextInt();
+        int[] array = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            array[i] = sc.nextInt();
+        }
+
+        solution.lumotoPartition(array, 0, array[n - 1]);
+
+    }
+
+    private void lumotoPartition(int[] array, int initialStartingIndex, int initialFinalIndex) {
+        int firstGreaterIndex = 0;
+        for (int i = initialStartingIndex; i < array.length; i++) {
+            if (array[i] < array[initialFinalIndex]) {
+                int temp = array[firstGreaterIndex];
+                array[firstGreaterIndex] = array[i];
+                array[i] = temp;
+                firstGreaterIndex++;
+            } else if (array[i] > array[initialFinalIndex]) {
+
+            } else {
+                int temp = array[firstGreaterIndex];
+                array[firstGreaterIndex] = array[i];
+                array[i] = temp;
+            }
+        }
+        this.printArray(array);
+    }
+
+
+
+
+    private void printArray(int[] a) {
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + " ");
+        }
+        System.out.println();
+    }
+}
