@@ -3,6 +3,47 @@ import java.util.*;
 
 public class Solution {
 
+    private void swap(int[] array, int i, int lastLesserIndex) {
+        int temp = array[i];
+        array[i] = array[lastLesserIndex];
+        array[lastLesserIndex] = temp;
+    }
+
+    private void recursion(int[] array, int pivotIndex) {
+        for (int j = pivotIndex; j > 0; j--) {
+            if (array[j] < array[j - 1]) {
+                lumotoPartition(array, 0, j);
+                break;
+            }
+        }
+        for (int j = array.length - 1; j > 0; j--) {
+            if (array[j] < array[j - 1]) {
+                lumotoPartition(array, pivotIndex, array.length - 1);
+                break;
+            }
+        }
+    }
+
+
+
+    private void lumotoPartition(int[] array, int initialStartingIndex, int initialFinalIndex) {
+        int lastLesserIndex = initialStartingIndex;
+        int pivot = array[initialFinalIndex];
+        //int pivotIndex = initialFinalIndex;
+        for (int i = initialStartingIndex; i <= initialFinalIndex; i++) {
+            if (array[i] < pivot) {
+                swap(array, i, lastLesserIndex);
+                lastLesserIndex++;
+            } else if (array[i] == pivot) {
+                swap(array, i, lastLesserIndex);
+            }
+        }
+        printArray(array);
+
+        recursion(array, lastLesserIndex);
+    }
+
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -14,31 +55,8 @@ public class Solution {
             array[i] = sc.nextInt();
         }
 
-        solution.lumotoPartition(array, 0, array[n - 1]);
-
+        solution.lumotoPartition(array, 0, n - 1);
     }
-
-    private void lumotoPartition(int[] array, int initialStartingIndex, int initialFinalIndex) {
-        int firstGreaterIndex = 0;
-        for (int i = initialStartingIndex; i < array.length; i++) {
-            if (array[i] < array[initialFinalIndex]) {
-                int temp = array[firstGreaterIndex];
-                array[firstGreaterIndex] = array[i];
-                array[i] = temp;
-                firstGreaterIndex++;
-            } else if (array[i] > array[initialFinalIndex]) {
-
-            } else {
-                int temp = array[firstGreaterIndex];
-                array[firstGreaterIndex] = array[i];
-                array[i] = temp;
-            }
-        }
-        this.printArray(array);
-    }
-
-
-
 
     private void printArray(int[] a) {
         for (int i = 0; i < a.length; i++) {
