@@ -1,0 +1,61 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int[] arrayToSort = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arrayToSort[i] = in.nextInt();
+        }
+
+        lomutoPartition(arrayToSort, 0, n - 1);
+    }
+
+
+    static void lomutoPartition(int[] array, int from, int to) {
+        int pivotIndex = to;
+        int pivot = array[to];
+        int lowerIndex = from;
+
+        for (int i = from; i <= to; i++) {
+            if (array[i] < pivot) {
+                swap(array, lowerIndex, i);
+                lowerIndex++;
+            }
+        }
+        swap(array, lowerIndex, pivotIndex);
+
+        printArray(array);
+        Recursion(array, to, from, lowerIndex);
+    }
+
+
+    static void Recursion(int[] array, int to, int from, int pivotIndex) {
+        if (pivotIndex - from > 1) {
+            lomutoPartition(array, from, pivotIndex - 1);
+        }
+        if (to - pivotIndex > 1) {
+            lomutoPartition(array, pivotIndex + 1, to);
+        }
+    }
+
+
+    static void swap(int[] array, int moveUp, int moveDown) {
+        int temp = array[moveUp];
+        array[moveUp] = array[moveDown];
+        array[moveDown] = temp;
+
+    }
+
+    static void printArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+    }
+}
