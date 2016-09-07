@@ -1,0 +1,52 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        Solution solution = new Solution();
+
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int[] array = new int[N];
+
+        for (int i = 0; i < N; i++) {
+            array[i] = sc.nextInt();
+        }
+
+        solution.countingSort2(array);
+        solution.printArray(array);
+
+
+
+
+    }
+
+    public void countingSort2(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] > array[i + 1]) {
+                swap(array, i, i + 1);
+                for (int j = i; j > 0; j--) {
+                    if (array[j] < array[j - 1]) {
+                        swap(array, j - 1, j);
+                    }
+                }
+            }
+        }
+    }
+
+
+    public void swap(int[] array, int lowerIndex, int upperIndex) {
+        int temp = array[lowerIndex];
+        array[lowerIndex] = array[upperIndex];
+        array[upperIndex] = temp;
+    }
+
+    public void printArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+    }
+
+}
