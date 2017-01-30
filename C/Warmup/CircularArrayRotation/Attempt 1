@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+class Solution
+{
+
+    static void Main(String[] args)
+    {
+        string[] NKQ = Console.ReadLine().Split(' ');
+        int n = Convert.ToInt32(NKQ[0]);
+        int k = Convert.ToInt32(NKQ[1]);
+        int q = Convert.ToInt32(NKQ[2]);
+
+        int LengthOfArray = n;
+        int NumberOfRotations = k;
+        int NumberOfQueries = q;
+
+        string[] ArrayOfStrings = Console.ReadLine().Split(' ');
+        int[] ArrayOfIntegers = Array.ConvertAll(ArrayOfStrings, Int32.Parse);
+        int[] Result = new Int32[n];
+
+        int[] TempResult = ArrayOfIntegers;
+        for (int a0 = 0; a0 < NumberOfQueries; a0++)
+        {
+            int m = Convert.ToInt32(Console.ReadLine());
+
+            
+
+            for (int z = 0; z < NumberOfRotations; z++)
+            {
+                int NumberToRotate = TempResult[n - 1];
+
+                for (int y = 0; y < LengthOfArray; y++)
+                {
+                    int NumberToSave = TempResult[y];
+                    if (y == 0)
+                    {
+                        TempResult[0] = NumberToRotate;
+                    }
+                    else
+                    {
+                        int tempInt = TempResult[y];
+                        TempResult[y] = NumberToRotate;
+                        NumberToRotate = NumberToSave;
+                    }
+                }
+            }
+
+            Console.ReadLine();
+        }
+        foreach (int i in TempResult)
+        {
+            Console.Write(i + " ");
+        }
+    }
+}
