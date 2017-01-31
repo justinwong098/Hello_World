@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+class Solution
+{
+
+    static void Main(String[] args)
+    {
+        string[] NKQ = Console.ReadLine().Split(' ');
+        int n = Convert.ToInt32(NKQ[0]);
+        int k = Convert.ToInt32(NKQ[1]);
+        int q = Convert.ToInt32(NKQ[2]);
+        string[] N = Console.ReadLine().Split(' ');
+        int[] ArrayOfIntegers = Array.ConvertAll(N, Int32.Parse);
+        int[] Result = new Int32[n];
+        int[] TempResult = ArrayOfIntegers;
+
+        while (k > 0)
+        {
+            k--;
+
+            int ShiftingUp = TempResult[0];
+            int ShiftingDown = TempResult[n - 1];
+            int Temp = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (i == 0)
+                {
+                    TempResult[0] = ShiftingDown;
+                }
+                else
+                {
+                    Temp = TempResult[i];
+                    TempResult[i] = ShiftingUp;
+                    ShiftingUp = Temp;
+                }
+ 
+            }
+        }
+        Result = TempResult;
+
+        while (q > 0)
+        {
+            q--;
+            string[] MAsAString = Console.ReadLine().Split();
+            int[] mAsASingleArray = Array.ConvertAll(MAsAString, Int32.Parse);
+            int m = mAsASingleArray[0];
+            Console.WriteLine(Result[m]);
+        }
+        }
+    }
