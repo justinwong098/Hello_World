@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+class Solution
+{
+
+    static void Main(String[] args)
+    {
+        string[] NKQ = Console.ReadLine().Split(' ');
+        int n = Convert.ToInt32(NKQ[0]);
+        int k = Convert.ToInt32(NKQ[1]);
+        int q = Convert.ToInt32(NKQ[2]);
+        string[] N = Console.ReadLine().Split(' ');
+        int[] ArrayOfIntegers = Array.ConvertAll(N, Int32.Parse);
+
+
+        int[] TempArray = ArrayOfIntegers;
+        int[] Result = new Int32[n];
+
+        while (k > 0)
+        {
+            k--;
+            Result[0] = TempArray[n - 1];
+            
+            for (int i = 1; i < ArrayOfIntegers.Length; i++)
+            {
+                Result[i] = TempArray[i - 1];
+                TempArray[i - 1] = Result[i - 1];
+            }
+            TempArray[n - 1] = Result[n - 1];
+           
+        }
+
+        while (q > 0)
+        {
+            q--;
+            int m = Int32.Parse(Console.ReadLine());
+            Console.WriteLine(Result[m]);
+        }
+    }
+}
