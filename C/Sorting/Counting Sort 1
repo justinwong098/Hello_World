@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HackerRank
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] inputsAsStrings = Console.ReadLine().Split();
+            int[] inputsAsInts = Array.ConvertAll(inputsAsStrings, Int32.Parse);
+
+
+            for (int numberForComparison = 0; numberForComparison < 100; numberForComparison++)
+            {
+                int count = 0;
+                foreach (int i in inputsAsInts)
+                {
+                    if (numberForComparison == i)
+                    {
+                        count++;
+                    }
+                }
+                Console.Write(count + " ");
+            }
+            Console.ReadLine();
+        }
+    }
+}
