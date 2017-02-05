@@ -1,0 +1,44 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HackerRank0
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Int32.Parse(Console.ReadLine());
+            string[] InputAsString = Console.ReadLine().Split(' ');
+            int[] InputAsInts = Array.ConvertAll(InputAsString, Int32.Parse);
+            List<int> result = new List<int>();
+            result.Add(InputAsInts[0]);
+
+            for (int i = 1; i < 87; i++)
+            {
+                for (int j = 0; j < result.Count; j++)
+                {
+                    if (InputAsInts[i] <= result[j])
+                    {
+                        result.Insert(j, InputAsInts[i]);
+                        break;
+                    } else if (j == result.Count - 1)
+                    {
+                        result.Add(InputAsInts[i]);
+                        break;
+                    }
+                }
+            }
+
+            for (int i = 0; i < result.Count; i++ )
+            {
+                Console.Write(result[i] + " ");
+            }
+            
+            Console.ReadLine();
+        }
+    }
+}
