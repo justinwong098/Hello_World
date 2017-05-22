@@ -1,0 +1,23 @@
+
+def rot13(secret_messages)
+  # your code here
+    secret_messages.map do |x| 
+        x.split do |a|
+            
+            a = a.ord
+            if ((a >= 65) && (a <= 90)) 
+                a -= 65
+                a = (a + 13) % 26
+                a += 65
+            elsif ((a >= 97) && (a <= 122)) 
+                a -= 97
+                a = (a + 13) % 26
+                a += 97
+            end
+            a = a.chr
+        end
+        x.to_str
+    end
+end
+           
+
