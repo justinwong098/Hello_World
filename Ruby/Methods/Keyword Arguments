@@ -1,0 +1,32 @@
+# Your code here
+
+def convert_temp(num, input_scale: 'celsius', **output_scale)
+    case output_scale
+    when 'fareheit'
+        case input_scale
+        when 'farenheit'
+            return num
+        when 'celsius'
+            return (num * (9/5)) + 32.0
+        when 'kelvin'
+            return (((9/5)*(num - 273.15)) + 32.0)
+        end
+    when 'kelvin'
+        case input_scale
+        when 'kelvin'
+            return num
+        when 'celsius'
+            return num + 273.15
+        when 'farenheit'
+            return (((5/9)*(num - 32.0)) + 273.15)
+        end
+    else
+        case input_scale
+        when 'farenheit'
+            return ((num - 32.0) * (5/9))
+        when 'kelvin'
+            return num - 273.15
+        else return num
+        end
+    end
+end
