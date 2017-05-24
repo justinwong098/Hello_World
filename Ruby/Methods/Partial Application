@@ -1,0 +1,13 @@
+combination = -> (n) do
+  -> (r) do
+    numerator = ((n-r + 1)..n).inject(:*)
+    denominator = (1..r).inject(:*)
+    return numerator / denominator
+  end
+end
+
+
+n = gets.to_i
+r = gets.to_i
+nCr = combination.(n)
+puts nCr.(r)
