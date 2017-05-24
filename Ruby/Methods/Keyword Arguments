@@ -2,9 +2,9 @@
 
 def convert_temp(num, input_scale:, output_scale: 'celsius')
     case output_scale
-    when 'fareheit'
+    when 'fahrenheit'
         case input_scale
-        when 'farenheit'
+        when 'fahrenheit'
             return num
         when 'celsius'
             return ((num * 9.0) / 5.0) + 32.0
@@ -17,12 +17,12 @@ def convert_temp(num, input_scale:, output_scale: 'celsius')
             return num
         when 'celsius'
             return num + 273.15
-        when 'farenheit'
+        when 'fahrenheit'
             return (((5.0 * (num - 32.0)) / 9.0) + 273.15)
         end
     when 'celsius'
         case input_scale
-        when 'farenheit'
+        when 'fahrenheit'
             return (((num - 32.0) * 5.0) / 9.0)
         when 'kelvin'
             return num - 273.15
