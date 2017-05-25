@@ -1,0 +1,27 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+def is_it_prime(nthElement)
+  return Math.sqrt(nthElement).floor.downto(2).each {|i| return false if nthElement % i == 0}
+end
+
+def is_it_palindrome(nthElement)
+  nthElement_as_chars = nthElement.to_s.chars
+  chars_size = nthElement_as_chars.size
+  count = 0
+  result = true
+  while (count <= chars_size/2 && result)
+    if (nthElement_as_chars[count] != nthElement_as_chars[chars_size - 1 - count])
+      result = false
+    end
+    count+1
+  end
+  return result
+end
+
+def array_of_palindrome_primes
+  2.upto(Float::INFINITY).lazy.select do |nthElement|
+    ((is_it_prime(nthElement)) && (is_it_palindrome(nthElement)))
+  end
+end
+
+array_size = gets.to_i
+p array_of_palindrome_primes.first(array_size)
