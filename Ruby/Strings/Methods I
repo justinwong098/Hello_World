@@ -1,0 +1,11 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+array_of_strings = gets
+def process_text(array_of_strings)
+  result = []
+  array_of_strings.each do |string|
+    string = string.chomp
+    string = string.strip
+    result << string
+  end
+  return array_of_strings.join
+end
