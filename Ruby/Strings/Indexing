@@ -1,0 +1,17 @@
+# Your code here
+def serial_average(orginial_string)
+  array_of_strings = orginial_string.split('-')
+  sss = array_of_strings[0]
+  xx = array_of_strings[1].to_f
+  yy = array_of_strings[2].to_f
+  zz_as_float = (xx + yy) / 2
+  zz_as_float = zz_as_float.round(2)
+  zz_as_string = zz_as_float.to_s
+  if (zz_as_string[1] == '.')
+    zz_as_string = '0' + zz_as_string
+  end
+  if (zz_as_string.length < 5)
+    zz_as_string += '0'
+  end
+  return sss + '-' + zz_as_string
+end
