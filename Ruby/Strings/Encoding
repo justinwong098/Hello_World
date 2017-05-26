@@ -1,0 +1,4 @@
+def transcode(iso_string)
+  iso_string = iso_string.force_encoding('utf-8')
+  return iso_string
+end
