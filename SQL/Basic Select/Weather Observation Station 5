@@ -1,0 +1,13 @@
+select * from 
+-- First choose the city with the shortest name, chosen first when ordered alphabetically
+    (select CITY, length(CITY) from STATION group by length(CITY) asc, CITY asc limit 1) shortest
+
+union all
+
+select * from
+-- Second choose the city with the longest name, again chosen first when ordered alphabetically
+    (select CITY, length(CITY) from STATION group by length(CITY) desc, CITY asc limit 1) longest
+
+
+
+
