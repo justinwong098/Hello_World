@@ -1,0 +1,19 @@
+if __name__ == '__main__':
+    x = int(input())
+    y = int(input())
+    z = int(input())
+    n = int(input())
+
+    result = []
+    temp_result = []
+    for i in range(0, x+1):
+        for j in range(0, y+1):
+            for k in range(0, z+1):
+                temp_result = []
+                if (i + j + k != n):
+                    temp_result.append(i)
+                    temp_result.append(j)
+                    temp_result.append(k)
+                    result.append(temp_result)
+
+    print(result)
