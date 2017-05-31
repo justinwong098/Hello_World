@@ -1,0 +1,11 @@
+if __name__ == '__main__':
+    N = int(input())
+    result = []
+
+    for i in range(0, N):
+        temp_list = str(input()).split(" ")
+        command = temp_list[0]
+        command_inputs = temp_list[:1]
+        if(hasattr(result, command)):
+            getattr(result, command) (*map(int, command_inputs))
+        else: print(result)
