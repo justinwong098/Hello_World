@@ -1,0 +1,8 @@
+# https://www.hackerrank.com/challenges/python-tuples?h_r=next-challenge&h_v=zen
+
+if __name__ == '__main__':
+    n = int(input())
+    integer_list = map(int, input().split())
+
+    result = tuple(map(int, integer_list))
+    print(hash(result))
