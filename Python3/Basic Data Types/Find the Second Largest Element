@@ -1,0 +1,15 @@
+if __name__ == '__main__':
+    n = int(input())
+    arr = map(int, input().split())
+    
+    temp_list = list(arr)
+    temp_list = sorted(temp_list)
+    temp_list = list(reversed(temp_list))
+    result = temp_list[0]
+    for i in range(0, n):
+        if temp_list[i] < result:
+            result = temp_list[i]
+            break
+            
+            
+    print(result)
