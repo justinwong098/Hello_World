@@ -1,0 +1,41 @@
+if __name__ == '__main__':
+    n = int(input())
+    
+    # build the global variables needed to compute the final result
+    # leave result blank for now
+    students_and_scores = []
+    second_lowest_score = float('inf')
+    result_second_lowest_student_names = []
+    
+    # input values
+    for _ in range(n):
+        name = input()
+        score = float(input())
+        students_and_scores.append([name, score])
+
+    # sort students by score (ascending)
+    students_and_scores = sorted(students_and_scores, key=lambda x: x[1])
+    
+    # assign lowest score by choosing first element's second attribute
+    lowest_score = students_and_scores[0][1]
+
+    # iterate through list of scores (second value/first index) until the first element
+    #   that is greater is found
+    for i in range(n):
+        if (lowest_score < students_and_scores[i][1]):
+            second_lowest_score = students_and_scores[i][1]
+            break
+
+    # find all students with scores equal to the second lowest score
+    # append their names (0th index) to the result list
+    for i in range(n):
+        if (second_lowest_score == students_and_scores[i][1]):
+            result_second_lowest_student_names.append(students_and_scores[i][0])
+
+    # sort the result by ascending alphabetical order
+    result_second_lowest_student_names = sorted(result_second_lowest_student_names)
+
+
+    # print names one by one, each on a new line
+    for i in range(len(result_second_lowest_student_names)):
+        print(result_second_lowest_student_names[i])
