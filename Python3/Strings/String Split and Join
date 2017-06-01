@@ -1,0 +1,7 @@
+def split_and_join(line):
+    # write your code here
+
+    temp_string = line.split(" ")
+    temp_string = "-".join(temp_string)
+    
+    return temp_string
