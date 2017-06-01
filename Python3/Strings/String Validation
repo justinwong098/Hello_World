@@ -1,3 +1,19 @@
+/*
+Wanted to use the following function definition to reduce repetitiveness of code
+Hopefully I'll learn how to do this soon
+*/
+    def is_a(is_it_a):
+        result = False
+        for i in range(len(s)):
+            if s[i].is_it_a:
+                result = True
+                break
+        print(result)
+
+    is_a(isalnum)
+
+
+
 if __name__ == '__main__':
     s = input()
     
