@@ -1,0 +1,19 @@
+def capitalize(string):
+    result = []
+    temp_string_list = string.split(" ")
+
+    for str in temp_string_list:
+        # make sure we're not dealing with empty string
+        #   if we are dealing with empty string, just append it
+        if (len(str) > 0):
+        
+            # check to see whether first letter is lower case.
+            #   if it is, change then append, if not just append to result
+            char_number = ord(str[0])
+            if (char_number >= 97 and char_number <= 122):
+                char_number -= 32
+                result.append(chr(char_number) + str[1:])
+            else: result.append(str)
+        else: result.append(str)
+
+    return " ".join(result)
