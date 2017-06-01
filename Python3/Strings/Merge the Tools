@@ -1,0 +1,14 @@
+def merge_the_tools(string, k):
+    # your code goes here
+
+
+    for i in range(0, len(string) - k + 1, k):
+        temp_string = string[i:i+k]
+        
+        result = ""
+        for char in temp_string:
+            if not result.__contains__(char):
+                result += char
+        print(result)
+            
+            
