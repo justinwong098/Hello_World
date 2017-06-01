@@ -1,0 +1,17 @@
+def swap_case(s):
+    input_as_chars = list(s)
+    result = []
+    for char in input_as_chars:
+        asciivalue = ord(char)
+        if asciivalue >= 65 and asciivalue <= 90:
+            asciivalue += 32
+            char = chr(asciivalue)
+        elif asciivalue >= 90 and asciivalue <= 125:
+            asciivalue -= 32
+            char = chr(asciivalue)
+                       
+        result.append(char)
+        
+        
+    result = ''.join(result)
+    return result
