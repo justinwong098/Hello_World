@@ -1,0 +1,9 @@
+def print_full_name(a, b):
+
+    temp_string = "Hello ! You just delved into python."
+    temp_list = temp_string.split('!')
+    temp_list.insert(1, a + " ")
+    temp_list.insert(2, b)
+    temp_list.insert(3, '!')
+    result = "".join(temp_list)
+    print(result)
