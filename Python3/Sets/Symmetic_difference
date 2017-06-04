@@ -1,0 +1,13 @@
+total_english_subscribers = int(input())
+english_newspaper_roll_numbers = set()
+english_newspaper_roll_numbers.update(map(int, input().split(' ')))
+
+total_french_subscribers = int(input())
+french_newspaper_roll_numbers = set()
+french_newspaper_roll_numbers.update(map(int, input().split(' ')))
+
+def one_or_the_other(english_newspaper_roll_numbers, french_newspaper_roll_numbers):
+    one_or_the_other = english_newspaper_roll_numbers.symmetric_difference(french_newspaper_roll_numbers)
+    print(len(one_or_the_other))
+
+one_or_the_other(english_newspaper_roll_numbers, french_newspaper_roll_numbers)
