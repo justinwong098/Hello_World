@@ -1,0 +1,19 @@
+set_A_size = int(input())
+set_A = set()
+set_A.update(map(int, input().split()))
+
+
+
+number_of_other_sets = int(input())
+for _ in range(number_of_other_sets):
+    input_line = list(input().split(' '))
+    command = input_line[0]
+    size_of_next_set = input_line[1]
+
+    next_set = set()
+    next_set.update(map(int, input().split()))
+    next_set.discard('')
+    getattr(set_A, command)(next_set)
+
+
+print(sum(set_A))
