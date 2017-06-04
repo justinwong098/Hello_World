@@ -1,0 +1,22 @@
+n = int(input())
+s = set(map(int, input().split()))
+
+N = int(input())
+
+def follow_commands_then_sum(set):
+    for i in range(N):
+        input_line = list(input().split(' '))
+        command = input_line[0]
+        
+        # used to check for length > 1, but it turns out
+        #     set.pop removes last element
+        #     set.pop() removes first element...
+        if command == 'pop':
+            set.pop()
+        else: getattr(set, command) (*map(int, input_line[1:]))
+
+    print(sum(set))
+
+
+
+follow_commands_then_sum(s)
