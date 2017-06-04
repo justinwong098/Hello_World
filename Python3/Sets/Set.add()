@@ -1,0 +1,7 @@
+n = int(input())
+stamps = list()
+for i in range(n):
+    stamps.append(input())
+    
+steps_as_set = set(stamps)
+print(len(steps_as_set))
