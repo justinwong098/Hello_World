@@ -1,0 +1,17 @@
+people_per_room = int(input())
+set_of_all_rooms = set()
+set_of_repeating_rooms = set()
+
+unique_room = -1
+
+
+def captains_room():
+    for room_number in input().split():
+        if room_number not in set_of_all_rooms:
+            set_of_all_rooms.add(room_number)
+        else: set_of_repeating_rooms.add(room_number)
+
+    print((set_of_all_rooms - set_of_repeating_rooms).pop())
+
+captains_room()
+
