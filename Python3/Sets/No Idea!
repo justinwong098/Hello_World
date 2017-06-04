@@ -1,0 +1,23 @@
+n_m = list(map(int, input().split(' ')))
+n = n_m[0]
+m = n_m[1]
+
+array = set()
+array.update(map(int, input().split(' ')))
+
+A = set()
+A.update(map(int, input().split(' ')))
+
+B = set()
+B.update(map(int, input().split(' ')))
+
+def happiness(array, plus, minus):
+    total_happiness = 0
+    for element in array:
+        if element in plus:
+            total_happiness += 1
+        if element in minus:
+            total_happiness -= 1
+    return total_happiness
+
+print(happiness(array, A, B))
