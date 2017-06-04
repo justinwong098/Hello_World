@@ -1,0 +1,15 @@
+A = set(map(int, input().split()))
+n = int(input())
+
+
+
+def strict_superset():
+    result = True
+    for _ in range(n):
+        B = set(map(int, input().split()))
+        if len(B - A) > 0:
+            result = False
+            break
+    print(result)
+
+strict_superset()
