@@ -1,0 +1,24 @@
+import itertools
+import math
+
+N = int(input())
+N_lowercase_letters = input().split(' ')
+number_of_indices_to_be_selected = int(input())
+
+
+def probability_of_a_being_selected():
+    combinations_with_a = 0
+    total_combinations = 0
+    all_combinations = itertools.combinations(N_lowercase_letters, number_of_indices_to_be_selected)
+    for combination in all_combinations:
+        total_combinations += 1
+        for element in combination:
+            if element == 'a':
+                combinations_with_a += 1
+                break
+
+    print(combinations_with_a / total_combinations)
+
+
+
+probability_of_a_being_selected()
