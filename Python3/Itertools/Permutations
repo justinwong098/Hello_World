@@ -1,0 +1,16 @@
+import itertools
+import functools
+import operator
+
+# contains a string followed by a space then the number for permutations' length
+input_line = (input().split())
+
+string = str(input_line[0])
+k = int(input_line[1])
+
+list_of_permutations = sorted(itertools.permutations(string, k))
+
+for p in list_of_permutations:
+    print("".join(p))
+
+
