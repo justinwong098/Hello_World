@@ -1,0 +1,11 @@
+from itertools import groupby
+
+input_line = str(input())
+
+result = []
+for key, group in groupby(input_line):
+    temp_tuple = (len(list(group)), int(key))
+    result.append(temp_tuple)
+
+for t in result:
+    print(t, end=" ")
